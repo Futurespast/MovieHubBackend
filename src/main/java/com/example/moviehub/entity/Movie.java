@@ -24,4 +24,8 @@ public class Movie {
     @Column(name="Genre", nullable = false)
     private String Genre;
 
+    @Column(name="Description", nullable = true)
+    private String Description;
+
+    
 }
