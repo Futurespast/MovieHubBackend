@@ -1,18 +1,19 @@
 package com.example.moviehub.controller;
 
 import com.example.moviehub.entity.Movie;
+import com.example.moviehub.request.MovieRequest;
 import com.example.moviehub.response.MovieResponse;
 import com.example.moviehub.service.MovieService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/Movies")
 public class MovieController {
     @Autowired
@@ -32,4 +33,13 @@ public class MovieController {
     public Movie getMovieById(@PathVariable long id) {
         return movieService.getMovieById(id);
     }
+
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public MovieResponse addMovie(@Valid @RequestBody MovieRequest movieRequest){
+        Movie savedMovie = movieService.addMovie(movieRequest);
+        return new MovieResponse(savedMovie);
+    }
+
 }
+

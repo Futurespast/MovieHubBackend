@@ -1,5 +1,6 @@
 package com.example.moviehub.entity;
 
+import com.example.moviehub.request.MovieRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,10 @@ public class Movie {
     @Column(name="Description", nullable = true)
     private String Description;
 
-    
+    public Movie (MovieRequest movieRequest){
+        Title = movieRequest.getTitle();
+        Type= movieRequest.getType();
+        Genre=movieRequest.getGenre();
+        Description= movieRequest.getDescription();
+    }
 }

@@ -2,6 +2,7 @@ package com.example.moviehub.service;
 
 import com.example.moviehub.entity.Movie;
 import com.example.moviehub.repository.MovieRepository;
+import com.example.moviehub.request.MovieRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,12 @@ public class MovieService {
 
     public Movie getMovieById(long id) {
         return movieRepository.findById(id).orElse(null);
+    }
+
+
+    public Movie addMovie(MovieRequest movieRequest) {
+        Movie movie = new Movie(movieRequest);
+        return movieRepository.save(movie);
     }
 }
 
