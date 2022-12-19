@@ -1,6 +1,7 @@
 package com.example.moviehub.entity;
 
 
+import com.example.moviehub.request.ReviewRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,10 @@ public class Review {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="movie_id")
     private Movie movie;
+
+    public Review (ReviewRequest reviewRequest){
+        Content=reviewRequest.getContent();
+        Rating=reviewRequest.getRating();
+
+    }
 }
