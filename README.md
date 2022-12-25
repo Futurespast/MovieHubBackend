@@ -19,6 +19,7 @@ The review entity has the following attributes:
 </ul>
 
 <h3> Entity Relationship Diagram </h3>
+![image](https://user-images.githubusercontent.com/104465572/209455661-181acab6-4da7-43ab-a351-34de29ae9184.png)
 
 
 <h3> Endpoints </h3>
